@@ -84,5 +84,18 @@ function openPage(name) {
     alert("Opening " + name);
 }
 </script>
+
+<script>
+document.addEventListener("keydown", function(e) {
+    document.body.innerHTML =
+        "<h1 style='color:white;background:black;padding:40px'>" +
+        "Key detected: " + e.key +
+        "</h1>";
+});
+
+document.body.style.background = "black";
+document.body.style.color = "white";
+</script>
+
 </body>
 </html>
