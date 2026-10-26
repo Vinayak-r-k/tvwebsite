@@ -36,6 +36,15 @@ body {
     outline: none;
     transform: scale(1.05);
 }
+button, a, .card {
+    cursor: pointer;
+    outline: none;
+}
+
+button:focus, a:focus, .card:focus {
+    outline: 4px solid #00aaff;
+    outline-offset: 5px;
+}
 </style>
 </head>
 
@@ -96,6 +105,19 @@ document.addEventListener("keydown", function(e) {
 document.body.style.background = "black";
 document.body.style.color = "white";
 </script>
+<script>
+    
+window.addEventListener("load", function() {
+    const firstCard = document.querySelector(
+        "button, a, .card"
+    );
 
+    if (firstCard) {
+        firstCard.setAttribute("tabindex", "0");
+        firstCard.focus();
+    }
+});
+
+</script>
 </body>
 </html>
