@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV Website</title>
+
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 180px;
+    height: 120px;
+    background: #333;
+    color: white;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.card:focus {
+    border-color: #00aaff;
+    outline: none;
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+<h1>My TV Website</h1>
+
+<div class="cards">
+    <button class="card" onclick="openPage('Home')">Home</button>
+    <button class="card" onclick="openPage('Movies')">Movies</button>
+    <button class="card" onclick="openPage('Games')">Games</button>
+    <button class="card" onclick="openPage('Settings')">Settings</button>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll(".card")];
+
+document.addEventListener("keydown", function(e) {
+    const current = cards.indexOf(document.activeElement);
+
+    if (current === -1) {
+        cards[0].focus();
+        return;
+    }
+
+    let next = current;
+
+    if (e.key === "ArrowRight")
+        next = Math.min(current + 1, cards.length - 1);
+
+    if (e.key === "ArrowLeft")
+        next = Math.max(current - 1, 0);
+
+    if (e.key === "ArrowDown")
+        next = Math.min(current + 2, cards.length - 1);
+
+    if (e.key === "ArrowUp")
+        next = Math.max(current - 2, 0);
+
+    if (next !== current) {
+        e.preventDefault();
+        cards[next].focus();
+    }
+});
+
+function openPage(name) {
+    alert("Opening " + name);
+}
+</script>
+</body>
+</html>
